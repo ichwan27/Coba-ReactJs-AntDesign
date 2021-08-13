@@ -1,0 +1,8 @@
+@import '~antd/dist/antd.css';
+
+.tableQuality{
+  width:100%;
+}
+.quality{
+    width: fit-content;
+}

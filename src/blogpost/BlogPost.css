@@ -1,0 +1,113 @@
+.section-title{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(53, 49, 49);
+
+}
+.post{
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.img-thumb2{
+    width: 150px;
+    height: 150px;
+}
+
+.img-thumb2 img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.content{
+    flex: 2;
+}
+
+.content p.title{
+    margin: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.content p.desc{
+    margin: 0px;
+    font-size: 12px;
+    color: #4a4a4a;
+}
+.remove{
+    margin-top: 12px;
+    border: 1px solid #485e66;
+    padding: 6px 20px;
+    background: rgb(240, 44, 44);
+    color: white;
+    border-radius: 4px;
+    outline: none;
+}
+button.update{
+    border: 1px solid #485e66;
+    padding: 6px 20px;
+    background: #8BC34A;
+    color: white;
+    border-radius:4px;
+    margin: 12px 8px 0px 12px;
+}
+.remove:hover, .update:hover{
+    cursor: pointer;
+}
+
+.form-add-post{
+    box-shadow:   0 0 16px rgba(0, 0, 0, 0.5);
+    width: 500px;
+    margin-left: 20px;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+.form-add-post label{
+    display: block;
+    font-size: 14px;
+    color: #607D88;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.form-add-post input,.form-add-post textarea{
+    outline: none;
+    border: 1px solid #607D88;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #607D88;
+}
+
+button.btn-submit{
+    outline: none;
+    border: 1px solid #607D88;
+    padding: 10px 30px;
+    border-radius: 4px;
+    color: white;
+    background: #2196F3;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.btn-submit:hover{
+    cursor: pointer;
+    background: white;
+    color: #2196F3;
+}

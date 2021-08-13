@@ -1,61 +1,84 @@
+//styling
 import './App.css';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import Title from 'antd/lib/typography/Title';
-import {Avatar} from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import { DashboardOutlined } from '@ant-design/icons';
-import SubMenu from 'antd/lib/menu/SubMenu';
-const { Header, Footer, Sider, Content } = Layout;
+//react
+import { Component,Fragment } from 'react';
+//ant-design
+import { Breadcrumb, Layout } from 'antd';
+import BreadcrumbItem from 'antd/lib/breadcrumb/BreadcrumbItem';
 
+//template
+import Header from './component/Headers.js';
+import Footer from './component/Footers.js';
+import Sidebar from './component/Sidebar.js';
 
-function App() {
-  return (
-    <div className="App">
-      <Layout>
-        <Header style={{padding:10}}>
-          <Avatar style={{float:"right"}} src="../images.png"/>
-          <Title style={{color:"white"}} level={3}>Title</Title>
-        </Header>
-        <Layout>
-          <Sider>
-            <Menu
-            defaultSelectedKeys={'Dashboard'}
-            mode="inline">
-              <Menu.Item key="Dashboard" icon={<DashboardOutlined />}>Dashboard</Menu.Item>
-              <SubMenu key="Submenu"icon={<UserOutlined/>} title="Ortunya">
-               <Menu.ItemGroup title="Anak-Anaknya">
-                  <SubMenu title="Anak 1">
-                    <Menu.ItemGroup title="Cucu-cucunya">  
-                    <SubMenu title="Cucunya 1">
-                      <Menu.ItemGroup title="Cicit-cicitnya">
-                        <Menu.Item>Cicit 1</Menu.Item>
-                        <Menu.Item>Cicit 2</Menu.Item>
-                      </Menu.ItemGroup>
-                    </SubMenu>
-                    </Menu.ItemGroup>
-                    <Menu.Item key="1">Cucunya 2</Menu.Item>
-                    <Menu.Item key="2">Cucunya 3</Menu.Item>
-                  </SubMenu>
-                  <Menu.Item key="3">Anak 2</Menu.Item>
-                </Menu.ItemGroup>
-              </SubMenu>
-            </Menu>
-          </Sider>
+//router
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+//file support
+import Piecharts from './content/charts/PieCharts.js';
+import XyCharts from './content/charts/XyCharts.js';
+import WordCloud from './content/charts/WordCloud.js';
+import Isi from './content/Content.js';
+import BlogPost from './blogpost/BlogPost.js';
+import TableQuality from './content/TableQuality/TableQuality';
+
+const { Content } = Layout;
+
+class App extends Component {
+  render(){
+    return (
+      <Fragment>
+        <Router>
           <Layout>
-          <Content className="site-layout" style={{ padding: '0 50px'}}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 10, minHeight:450, background:'#fff'}}>
-            Content
-            </div>
-          </Content>
-          <Footer style={{textAlign:"center"}}>Mohammad Ichwan 04 AGUSTUS 2021</Footer>
+            <Header/>
+            <Layout>
+            <Sidebar/>
+            <Layout>
+            <Content className="site-layout" style={{ padding: '0 50px'}}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Switch>
+                  <Route exact path="/">
+                    <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+                  </Route>
+                  <Route path="/xychart">
+                    <Breadcrumb.Item>Chart</Breadcrumb.Item>
+                    <Breadcrumb.Item>Xychart</Breadcrumb.Item>
+                  </Route>
+                  <Route path="/wordcloud">
+                    <Breadcrumb.Item>Chart</Breadcrumb.Item>
+                    <Breadcrumb.Item>Word CLoud</Breadcrumb.Item>
+                  </Route>
+                  <Route path="/tablequality">
+                    <BreadcrumbItem>Table Quality</BreadcrumbItem>
+                  </Route>
+                  <Route path="/youtube">
+                    <BreadcrumbItem>Youtube Component</BreadcrumbItem>
+                  </Route>
+                  <Route path="/blogpost">
+                    <BreadcrumbItem>Blog post</BreadcrumbItem>
+                  </Route>
+                </Switch>
+              </Breadcrumb>
+              <div className="site-layout-background" style={{ padding: 10, minHeight:450, background:'#fff'}}>
+                <Switch>
+                  <Route exact path="/" component= {Piecharts}/>
+                  <Route path="/wordcloud" component={WordCloud}/>
+                  <Route  path="/xychart" component={XyCharts}/>
+                  <Route path="/blogpost" component={BlogPost}/>
+                  <Route path="/tablequality" component={TableQuality}/>
+                  <Route path="/Youtube" component={Isi}/>
+                </Switch>
+              </div>
+            </Content>
+            <Footer/>
+            </Layout>
+            </Layout>
           </Layout>
-        </Layout>
-      </Layout>
-    </div>
-  );
+       </Router>
+    </Fragment>
+    );
+  }
 }
 
 export default App;
